@@ -20,7 +20,7 @@ import "./Navbar.css";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 
-function Navbar({ search, setSearch, products = [] }) {
+function Navbar({ search = "", setSearch = () => {}, products = [] }) {
   // Search box focus me hai ya nahi track karne ke liye
   const [isFocused, setIsFocused] = useState(false);
 

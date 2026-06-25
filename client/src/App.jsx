@@ -9,21 +9,33 @@
  */
 
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/login"; // client/src/pages/login.jsx
-import Signup from "./pages/Signup"; // client/src/pages/Signup.jsx
+import ProductList from "./pages/ProductList";
+import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
     <Routes>
       {/* Home / Product catalog Route */}
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<ProductList />} />
+      
+      {/* Product Detail Route */}
+      <Route path="/product/:id" element={<ProductDetail />} />
+      
+      {/* Shopping Cart Route */}
+      <Route path="/cart" element={<Cart />} />
       
       {/* Login Screen Route */}
       <Route path="/login" element={<Login />} />
       
       {/* Create Account Route */}
       <Route path="/signup" element={<Signup />} />
+      
+      {/* Checkout Screen Route */}
+      <Route path="/checkout" element={<Checkout />} />
     </Routes>
   );
 }

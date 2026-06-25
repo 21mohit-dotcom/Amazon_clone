@@ -43,6 +43,32 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Product category is required"],
     trim: true
+  },
+
+  // Product rating out of 5
+  rating: {
+    type: Number,
+    default: 0,
+    min: 0,
+    max: 5
+  },
+
+  // Number of reviews
+  numReviews: {
+    type: Number,
+    default: 0
+  },
+
+  // Original price before discount (if applicable)
+  originalPrice: {
+    type: Number,
+    default: null
+  },
+
+  // Whether product is in stock
+  inStock: {
+    type: Boolean,
+    default: true
   }
 }, {
   // Automatically manage 'createdAt' and 'updatedAt' fields

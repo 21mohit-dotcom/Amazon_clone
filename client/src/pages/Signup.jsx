@@ -1,44 +1,31 @@
-/**
- * @file Signup.jsx
- * @description AmazonLite Signup Page.
- * Matches the official Amazon Create Account page visual style, reusing login.css.
- * 
- * Hinglish Guide:
- * Is component ke through user new account register kar sakta hai.
- * Hum Name, Email aur Password collect kar ke `/api/auth/signup` backend API call karte hain.
- * Agar signup success hota hai, to user automatically login ho jata hai aur profile update ho jati hai.
- */
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api";
 import { useAuth } from "../context/AuthContext";
-import "./login.css"; // We reuse login.css since the forms are styled identically
+import "./login.css";
 
+/**
+ * Signup Component
+ * 
+ * Hindi:
+ * User registration form collect karta hai: Name, Email aur Password.
+ * Backend par POST /api/auth/signup request bhejta hai.
+ * Reg details validation match hone par user automatically authenticated ho jata hai and homepage open ho jata hai.
+ */
 function Signup() {
-  // Input fields hook states
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
-  // Error message display alert
   const [error, setError] = useState("");
-
-  // Loading click indicator
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  /**
-   * Submit registration form handler
-   * Hindi: Form submit hone par fields validate kar ke backend signup API hit karte hain.
-   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic client side matching validations
     if (password !== confirmPassword) {
       return setError("Passwords do not match!");
     }
@@ -51,7 +38,6 @@ function Signup() {
       setError("");
       setLoading(true);
 
-      // Call Express signup endpoint
       const res = await api.post("/api/auth/signup", {
         name,
         email,
@@ -59,14 +45,10 @@ function Signup() {
       });
 
       const { user, token } = res.data;
-
-      // Authenticate globally using session tokens
       login(user, token);
-
-      // Success register page redirection
       navigate("/");
     } catch (err) {
-      console.error("Signup error details:", err);
+      console.error("Signup error:", err);
       setError(
         err.response?.data?.message ||
           "Registration failed. Email might already be taken."
@@ -78,8 +60,7 @@ function Signup() {
 
   return (
     <div className="login-page-container">
-      
-      {/* AmazonLite Logo branding */}
+      {/* Brand logo branding */}
       <div className="login-logo-container" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
         <div className="login-logo-text">
           amazon<span className="lite-logo-span">lite</span>
@@ -90,9 +71,9 @@ function Signup() {
         </svg>
       </div>
 
-      {/* Main card panel box */}
+      {/* Signup box panel */}
       <div className="login-form-card">
-        <h1 className="login-card-title">Create Account</h1>
+        <h1 className="login-card-title">Create account</h1>
 
         {/* Display validation issues if any exist */}
         {error && (
@@ -106,7 +87,7 @@ function Signup() {
         )}
 
         <form onSubmit={handleSubmit} className="auth-form-tag">
-          {/* Your Name field input */}
+          {/* Your Name field */}
           <div className="input-group-wrapper">
             <label className="input-label-field">Your name</label>
             <input
@@ -120,7 +101,7 @@ function Signup() {
             />
           </div>
 
-          {/* Email field input */}
+          {/* Email field */}
           <div className="input-group-wrapper">
             <label className="input-label-field">Email</label>
             <input
@@ -132,7 +113,7 @@ function Signup() {
             />
           </div>
 
-          {/* Password field input */}
+          {/* Password field */}
           <div className="input-group-wrapper">
             <label className="input-label-field">Password</label>
             <input
@@ -145,7 +126,7 @@ function Signup() {
             />
           </div>
 
-          {/* Re-enter Password validation field */}
+          {/* Confirm Password field */}
           <div className="input-group-wrapper">
             <label className="input-label-field">Re-enter password</label>
             <input
@@ -157,32 +138,32 @@ function Signup() {
             />
           </div>
 
-          {/* Yellow gradient registration submission button action */}
+          {/* Amber Action Button */}
           <button
             type="submit"
             className="yellow-gradient-btn"
+            style={{ backgroundColor: "#febd69", borderColor: "#a88734" }}
             disabled={loading}
           >
-            {loading ? "Creating Account..." : "Create your AmazonLite account"}
+            {loading ? "Creating account..." : "Verify email"}
           </button>
         </form>
 
         <p style={{ fontSize: "12px", margin: "14px 0 0 0", color: "#111", lineHeight: "1.4" }}>
-          By creating an account, you agree to AmazonLite's <span style={{ color: "#0066c0", cursor: "pointer" }}>Conditions of Use</span> and <span style={{ color: "#0066c0", cursor: "pointer" }}>Privacy Notice</span>.
+          By creating an account, you agree to AmazonLite's Conditions of Use and Privacy Notice.
         </p>
 
-        {/* Divider separation block */}
         <div className="signup-divider-container" style={{ margin: "18px 0" }}>
           <h5 className="divider-subtext">Already have an account?</h5>
         </div>
 
-        {/* Link back to login screen */}
+        {/* Link back to login */}
         <Link to="/login" className="grey-silver-gradient-btn">
           Sign in ▾
         </Link>
       </div>
 
-      {/* Auth footer links */}
+      {/* Bottom Footer Links */}
       <div className="auth-footer-container">
         <div className="footer-links-row">
           <a href="#" className="footer-link">Conditions of Use</a>

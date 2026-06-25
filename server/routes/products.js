@@ -11,7 +11,7 @@
  */
 
 const express = require("express");
-const Product = require("../models/Product");
+const Product = require("../models/product");
 
 // Create Express Router instance
 const router = express.Router();
