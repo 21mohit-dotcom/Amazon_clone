@@ -72,11 +72,11 @@ const sampleProducts = [
     inStock: true
   },
   {
-    title: "Laptop Stand",
-    price: 1499,
-    originalPrice: 2999,
-    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800",
-    description: "Adjustable aluminum laptop stand with ergonomic design. Supports laptops from 10 to 17 inches with anti-slip silicone pads and heat ventilation holes.",
+    title: "Face Cream",
+    price: 399,
+    originalPrice: 799,
+    image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800",
+    description: "Premium skin brightening face cream with SPF 30 protection. Enriched with vitamin C, hyaluronic acid, and natural extracts for glowing hydrated skin.",
     category: "Accessories",
     rating: 4.5,
     numReviews: 892,
@@ -303,11 +303,11 @@ const sampleProducts = [
     inStock: true
   },
   {
-    title: "Smart LED Bulb Pack",
-    price: 1299,
-    originalPrice: 2499,
-    image: "https://images.unsplash.com/photo-1543512214-318228f0f3b2?w=800",
-    description: "Pack of 4 WiFi smart LED bulbs with 16 million colors. Voice control compatible with Alexa and Google. Schedule, dim, and group control via app.",
+    title: "MS Dhoni IPL Jersey",
+    price: 999,
+    originalPrice: 1999,
+    image: "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?w=800",
+    description: "Official MS Dhoni CSK yellow IPL jersey. Premium breathable polyester fabric with printed name and number. Available in all sizes for true cricket fans.",
     category: "Home",
     rating: 4.5,
     numReviews: 2876,
