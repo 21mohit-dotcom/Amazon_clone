@@ -16,14 +16,96 @@
 
 /* AmazonLite Text Logo styling */
 .logo {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
-  color: white;
   margin: 0;
   cursor: pointer;
-  letter-spacing: -0.5px;
   user-select: none;
   font-family: inherit;
+  white-space: nowrap;
+  display: flex;
+  align-items: baseline;
+  letter-spacing: -0.5px;
+  transition: opacity 0.2s;
+}
+
+.logo:hover {
+  opacity: 0.85;
+}
+
+.logo-amazon {
+  color: white;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -1px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.logo-lite {
+  color: #febd69;
+  font-weight: 900;
+  font-style: italic;
+  text-shadow: 0 1px 4px rgba(254,189,105,0.4);
+  margin: 0 1px;
+}
+
+.logo-dot {
+  color: #ff9900;
+  font-size: 16px;
+  font-weight: 700;
+  font-style: italic;
+  vertical-align: super;
+  text-shadow: 0 1px 3px rgba(255,153,0,0.4);
+}
+
+/* Left section with logo + location */
+.nav-left-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+/* Location/Delivery Section */
+.nav-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 4px 6px;
+  transition: border-color 0.15s;
+}
+
+.nav-location:hover {
+  border-color: white;
+}
+
+.nav-location-icon {
+  font-size: 18px;
+}
+
+.nav-location-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nav-location-label {
+  font-size: 11px;
+  color: #ccc;
+  font-weight: 400;
+}
+
+.nav-location-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Outer Search Wrapper matching Amazon search bar box-shadow and outlines */
@@ -217,41 +299,326 @@
   line-height: 1.2;
 }
 
-/* Cart Button */
-.cart-btn {
-  background-color: #f0c14b;
-  border: 1px solid #a88734;
-  border-color: #a88734 #9c7e31 #846a29;
-  padding: 8px 16px;
+/* Cart Icon Button */
+.cart-icon-btn {
+  background: transparent;
+  border: 1px solid transparent;
   border-radius: 3px;
+  padding: 6px 8px;
   cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s;
+}
+
+.cart-icon-btn:hover {
+  border-color: white;
+}
+
+.cart-svg-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -2px;
+  right: 2px;
+  background: #febd69;
+  color: #131921;
+  font-size: 12px;
   font-weight: 700;
-  color: #111;
-  font-size: 14px;
-  transition: background 0.1s ease-in-out;
-}
-
-.cart-btn:hover {
-  background: #ddb347;
-}
-
-/* Bounce animation keyframes for physical feedback on click */
-@keyframes cartBump {
-  0% {
-    transform: scale(1);
-  }
-  30% {
-    transform: scale(1.15); /* Pop out slightly */
-  }
-  50% {
-    transform: scale(0.92); /* Shrink slightly */
-  }
-  100% {
-    transform: scale(1); /* Reset to normal */
-  }
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  line-height: 1;
 }
 
 .bump-animation {
   animation: cartBump 300ms ease-out;
-  background-color: #f3a847 !important; /* Temporarily highlight button */
+}
+
+@keyframes cartBump {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.2); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* ==========================================================================
+   CART DROPDOWN MINI-CART STYLES
+   ========================================================================== */
+
+.cart-wrapper {
+  position: relative;
+}
+
+.cart-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 400px;
+  max-height: 520px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.2);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  animation: dropSlideIn 0.2s ease;
+  overflow: hidden;
+}
+
+@keyframes dropSlideIn {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.cart-dropdown-header {
+  background: #232f3e;
+  padding: 14px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-dropdown-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.cart-dropdown-empty {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.cart-empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.cart-dropdown-empty p {
+  color: #565959;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+}
+
+.cart-dropdown-shop-btn {
+  background: #febd69;
+  border: 1px solid #a88734;
+  color: #111;
+  padding: 10px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cart-dropdown-items {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 320px;
+}
+
+.cart-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.15s;
+}
+
+.cart-dropdown-item:hover {
+  background: #f9f9f9;
+}
+
+.cart-dropdown-item-img {
+  flex: 0 0 60px;
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fcfcfc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #f0f0f0;
+}
+
+.cart-dropdown-item-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.cart-dropdown-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-dropdown-item-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f1111;
+  margin: 0 0 4px 0;
+  cursor: pointer;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cart-dropdown-item-title:hover {
+  color: #c45500;
+}
+
+.cart-dropdown-item-price {
+  font-size: 13px;
+  color: #B12704;
+  font-weight: 600;
+}
+
+.cart-dropdown-qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 6px;
+  border: 1px solid #d5d9d9;
+  border-radius: 6px;
+  overflow: hidden;
+  width: fit-content;
+  background: #f0f2f2;
+}
+
+.cart-dropdown-qty-btn {
+  border: none;
+  background: transparent;
+  width: 28px;
+  height: 26px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f1111;
+  transition: background 0.15s;
+}
+
+.cart-dropdown-qty-btn:hover {
+  background: #e5e5e5;
+}
+
+.cart-dropdown-qty-value {
+  padding: 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  background: white;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid #d5d9d9;
+  border-right: 1px solid #d5d9d9;
+}
+
+.cart-dropdown-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.cart-dropdown-item-total {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f1111;
+}
+
+.cart-dropdown-item-remove {
+  border: none;
+  background: none;
+  color: #007185;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 4px;
+}
+
+.cart-dropdown-item-remove:hover {
+  color: #c40000;
+  text-decoration: underline;
+}
+
+.cart-dropdown-footer {
+  border-top: 2px solid #ddd;
+  padding: 14px 16px;
+  background: #f8f8f8;
+}
+
+.cart-dropdown-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.cart-dropdown-subtotal strong {
+  color: #B12704;
+  font-size: 18px;
+}
+
+.cart-dropdown-order-btn {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, #00a650 0%, #008a43 100%);
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,166,80,0.3);
+  margin-bottom: 8px;
+}
+
+.cart-dropdown-order-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,166,80,0.4);
+}
+
+.cart-dropdown-view-btn {
+  display: block;
+  width: 100%;
+  background: transparent;
+  border: 1px solid #d5d9d9;
+  color: #0f1111;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.cart-dropdown-view-btn:hover {
+  background: #f7fafa;
+  border-color: #c8f3fa;
+}
+
+@media (max-width: 500px) {
+  .cart-dropdown {
+    width: 320px;
+    right: -20px;
+  }
 }
