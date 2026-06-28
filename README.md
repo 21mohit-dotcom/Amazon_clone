@@ -21,8 +21,7 @@ A full-stack Amazon-inspired e-commerce web application built with **React 19**,
 
 ## Demo
 
-**Frontend:** [https://amazonlite.netlify.app](https://amazonlite.netlify.app)
-**Backend:** [https://amazonlite-backend-01ud.onrender.com](https://amazonlite-backend-01ud.onrender.com)
+[https://amazon-clone-opal-two-28.vercel.app](https://amazon-clone-opal-two-28.vercel.app)
 
 ---
 
