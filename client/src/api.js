@@ -15,7 +15,7 @@ import axios from "axios";
 // Creating configured axios instance
 const api = axios.create({
   // Dynamically uses API URL (e.g., http://localhost:5000) based on environment
-  baseURL: import.meta.env.VITE_API_URL, 
+  baseURL: import.meta.env.VITE_API_URL || "https://amazonlite-backend-01ud.onrender.com",
 });
 
 export default api;
