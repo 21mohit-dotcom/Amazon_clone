@@ -24,7 +24,7 @@ import { CartProvider } from "./context/CartContext";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* Provides client-side routing capabilities */}
-    <BrowserRouter basename="/Amazon_clone">
+    <BrowserRouter basename="/">
       {/* Provides global authentication states (user, login, logout) */}
       <AuthProvider>
         {/* Provides global cart states (cartItems, total, addToCart) */}
